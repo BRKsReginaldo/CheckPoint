@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+Route::resource('travel', 'TravelController');
+Route::get('itens/{category}', 'ItensController@category');
+Route::post('bag/itens/{travel}', 'BagController@itens');
 Route::get('/app', 'HomeController@index')->name('home');
+Route::put('/itens/{item}/{travel}/toggle-status/{status}', 'ItensController@toggleStatus');

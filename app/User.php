@@ -41,4 +41,9 @@ class User extends Model implements
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function travels()
+    {
+        return $this->hasMany(Travel::class);
+    }
 }

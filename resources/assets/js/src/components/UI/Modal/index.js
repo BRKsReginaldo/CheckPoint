@@ -18,12 +18,18 @@ export default Vue.extend({
     }
   },
 
+  mounted() {
+    $(this.$el).on('show.bs.modal', ev => this.$emit('shown', ev))
+    $(this.$el).on('hidden.bs.modal', ev => this.$emit('hidden', ev))
+  },
+
   render(h) {
     return (
       h('div', {
         'class': [
           'modal',
-          this.$props.show ? 'show fade' : ''
+          'show',
+          'fade'
         ],
         attrs: {
           tabindex: "-1",
@@ -59,20 +65,36 @@ export default Vue.extend({
                 ],
                 attrs: {
                   type: 'button',
-                  dataDismiss: 'modal',
-                  ariaLabel: 'Close'
+                  'data-dismiss': 'modal',
+                  'aria-label': 'Close'
                 }
               }, [
                 h('span', {
                   attrs: {
-                    ariaHidden: 'true'
+                    'aria-hidden': 'true'
                   },
                   domProps: {
                     innerHTML: '&times;'
                   }
                 })
               ])
-            ])
+            ]),
+            h('div', {
+              'class': [
+                'modal-body'
+              ]
+            }, [
+              this.$slots.default
+            ]),
+            this.$slots.hasOwnProperty('footer')
+              ? h('div', {
+                'class': [
+                  'modal-footer'
+                ]
+              }, [
+                this.$slots.footer
+              ])
+              : null
           ])
         ])
       ])

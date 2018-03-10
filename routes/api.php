@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('categories', 'CategoryController@index');
+
+Route::get('categories', function() {
+   return \App\Category::with('itens')->get();
+});
+
+Route::post('categories', function(Request $request) {
+   return \App\Category::create($request->all());
+});
+
+Route::post('item/{category}', function(\App\Category $category, Request $request) {
+   return $category->itens()->create($request->all());
+});

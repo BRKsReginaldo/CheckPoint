@@ -61,12 +61,13 @@
             </div>
         </nav>
 
-        <main class="py-4" id="app">
+        <main class="py-4" id="@yield('appid')">
             @yield('content')
         </main>
     </div>
 
     <!-- Scripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
