@@ -10,6 +10,6 @@ class Category extends Model
     protected $fillable = ['name', 'icon'];
 
     public function itens() {
-	return $this->hasMany(App\Item::class);
+	return $this->hasMany(Item::class);
     }
 }
