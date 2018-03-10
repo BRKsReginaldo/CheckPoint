@@ -20,7 +20,7 @@
     }),
     async mounted() {
       this.cachedTravel = {...this.travel}
-      const {data: {data}} = await axios.get('/api/categories')
+      const {data} = await axios.get('/api/categories')
 
       this.categories = data
     },
