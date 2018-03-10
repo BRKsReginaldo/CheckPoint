@@ -19,7 +19,8 @@ mix
     ]
   })
   .js('resources/assets/js/app.js', 'public/js')
-  // .sass('resources/assets/sass/sass.scss', 'public/css')
+   .sass('resources/assets/sass/sass.scss', 'public/css')
   .stylus('resources/assets/stylus/stylus.styl', 'public/css')
   .disableNotifications()
+  .sourceMaps()
   // .styles(['public/css/sass.css', 'public/css/stylus.css'], 'public/css/app.css');
